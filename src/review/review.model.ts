@@ -1,8 +1,23 @@
-export class ReviewModel {
-	__id: string;
+import { Document } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Types } from 'mongoose';
+
+@Schema({ timestamps: true, _id: true })
+export class ReviewModel extends Document {
+	@Prop()
 	name: string;
+
+	@Prop()
 	title: string;
+
+	@Prop()
 	description: string;
+
+	@Prop()
 	rating: number;
-	createdAt: Date;
+
+	@Prop()
+	productId: Types.ObjectId;
 }
+
+export const ReviewSchema = SchemaFactory.createForClass(ReviewModel);

@@ -20,5 +20,6 @@
     "noFallthroughCasesInSwitch": false,
     "skipDefaultLibCheck": true,
     "strictPropertyInitialization": false
-  }
+  },
+  "exclude": ["test"]
 }
