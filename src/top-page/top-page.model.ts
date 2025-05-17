@@ -29,7 +29,7 @@ export class HHData {
 	seniorSalary: number;
 }
 
-@Schema({ timestamps: true, _id: false })
+@Schema({ timestamps: true, _id: true })
 export class TopPageModel {
 	@Prop({ enum: TopLevelCategory, type: Number })
 	firstCategory: TopLevelCategory;
@@ -40,7 +40,7 @@ export class TopPageModel {
 	@Prop()
 	alias: string;
 
-	@Prop()
+	@Prop({ text: true })
 	title: string;
 
 	@Prop()
@@ -59,3 +59,5 @@ export class TopPageModel {
 	tags: Array<string>;
 }
 export const TopPageSchema = SchemaFactory.createForClass(TopPageModel);
+TopPageSchema.index({ title: 'text', seoText: 'text', tags: 'text' });
+TopPageSchema.index({ '$**': 'text' });
