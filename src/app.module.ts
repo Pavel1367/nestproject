@@ -8,6 +8,10 @@ import { ProductModule } from './product/product.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { getMongoConfig } from '../configs/mongo.config';
+import { FilesModule } from './files/files.module';
+import { SitemapModule } from './sitemap/sitemap.module';
+import { TelegrafModule } from './telegraf/telegraf.module';
+import { getTelegramConfig } from '../configs/telegram.config';
 
 @Module({
 	imports: [
@@ -21,6 +25,13 @@ import { getMongoConfig } from '../configs/mongo.config';
 		TopPageModule,
 		ReviewModule,
 		ProductModule,
+		FilesModule,
+		SitemapModule,
+		TelegrafModule.forRootAsync({
+			imports: [ConfigModule],
+			inject: [ConfigService],
+			useFactory: getTelegramConfig,
+		}),
 	],
 	controllers: [AppController],
 	providers: [AppService],

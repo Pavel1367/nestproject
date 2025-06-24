@@ -21,6 +21,9 @@ export class TopPageService {
 		return this.topPageModel.find({ alias }).exec();
 	}
 
+	async findAll(): Promise<TopPageModel[]> {
+		return this.topPageModel.find().exec();
+	}
 	async deleteById(id: string) {
 		return this.topPageModel.findByIdAndDelete(id).exec();
 	}
