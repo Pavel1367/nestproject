@@ -13,14 +13,14 @@ services:
     user: root
     volumes:
       - mongo_data:/data/db
-  top-api.server:
-    image: top-api:latest
-    container_name: top-api
-    restart: always
-    ports:
-      - 3000:3000
-    volumes:
-      - ./.env:/opt/app/.env
+#  top-api.server:
+#    image: top-api:latest
+#    container_name: top-api
+#    restart: always
+#    ports:
+#      - 3000:3000
+#    volumes:
+#      - ./.env:/opt/app/.env
 
 volumes:
   mongo_data:
